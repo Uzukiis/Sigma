@@ -45,13 +45,22 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: const Icon(Icons.add),),
         body: const Padding(padding: EdgeInsets.only(left: 20, right: 20,top: 10),
-        child: Column(
+        child: Column(mainAxisSize: MainAxisSize.max,
             children: [ Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-            children: [
-              Text("Sigma", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),), 
-              Image(image: AssetImage('assets/img/sigma.jpg'), width: 50, height: 50)], ), 
-            //ListView(), 
-              Row(children: [],)],
+              children: [
+                Text("Sigma", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),), 
+                Image(image: AssetImage('assets/img/sigma.jpg'), width: 50, height: 50)],
+                ),
+                SizedBox(height: 50,),
+                Column(
+                  children: [
+                    Center(child: (Text("Popular flashcards sets",style: TextStyle(fontSize: 24),)),),
+                    Row(children: [Text('set1'),Text('set2'),Text('set3')],)
+                  ],
+                ) ],
+              
+              
+              
           )),
         ),
     );

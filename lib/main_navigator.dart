@@ -43,8 +43,8 @@ class _MainAppState extends State<MainApp> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Search',
+              icon: Icon(Icons.pageview),
+              label: 'Your sets',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
