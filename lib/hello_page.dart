@@ -44,18 +44,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
         },
         child: const Icon(Icons.add),),
-        body: const Padding(padding: EdgeInsets.only(left: 20, right: 20,top: 10),
+        body:  Padding(padding: const EdgeInsets.only(left: 20, right: 20,top: 10),
         child: Column(mainAxisSize: MainAxisSize.max,
-            children: [ Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+            children: [ const Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceBetween, 
               children: [
                 Text("Sigma", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),), 
                 Image(image: AssetImage('assets/img/sigma.jpg'), width: 50, height: 50)],
                 ),
-                SizedBox(height: 50,),
+                const SizedBox(height: 50,),
                 Column(
                   children: [
-                    Center(child: (Text("Popular flashcards sets",style: TextStyle(fontSize: 24),)),),
-                    Row(children: [Text('set1'),Text('set2'),Text('set3')],)
+                    const Text('Welcome back {USER}!', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),),
+                    const SizedBox(height: 40,),
+                    Container(width: 200, height: 200, decoration: const BoxDecoration(shape: BoxShape.circle, color: Color.fromARGB(255, 0, 0, 0)),),
+                    const SizedBox(height: 100,),
+                    const Center(child: (Text("Popular flashcards sets",style: TextStyle(fontSize: 24),)),),
+                    Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceAround, 
+                    children: [
+                      const Text('set1'), const Text('set2'), const Text('set3'), ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(minimumSize: Size(60, 60)),child: const Icon(Icons.arrow_forward))
+                    ],)
                   ],
                 ) ],
               
