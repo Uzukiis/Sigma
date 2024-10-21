@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'hello_page.dart';
+import 'profile.dart';
 
 
 void main() {
@@ -63,7 +64,9 @@ class _MainAppState extends State<MainApp> {
               bucket: PageStorageBucket(),
             ),
             const Placeholder(),
-            const Placeholder(),
+            PageStorage(
+              child: const ProfilePage(),
+              bucket: PageStorageBucket()),
           ],
         ),
       ),
