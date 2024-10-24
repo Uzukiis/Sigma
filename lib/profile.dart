@@ -12,8 +12,8 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool checkBoxNotifications = true;
-  bool checkBoxSound = true;
+  bool switchNotifications = true;
+  bool switchSound = true;
 
   @override
   Widget build(BuildContext context) {
@@ -68,17 +68,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    Transform.scale( scale: 1.8,
-                      child: Checkbox(
-                        value: checkBoxNotifications,
+                       Switch(
+                        value: switchNotifications,
                         activeColor: const Color.fromRGBO(214, 99, 32, 1),
                         onChanged: (bool? value) {
                           setState(() {
-                            checkBoxNotifications = value ?? false;
+                            switchNotifications = value ?? false;
                           });
                         },
                       ),
-                    ),
                   ],
                 ),
                 const SizedBox(height: 10),
@@ -91,20 +89,35 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     const SizedBox(width: 10,),
-                    Transform.scale(
-                      scale: 1.8,
-                      child: Checkbox(
-                        value: checkBoxSound,
+                      Switch(
+                        value: switchSound,
                         activeColor: const Color.fromRGBO(214, 99, 32, 1),
                         onChanged: (bool? value) {
                           setState(() {
-                            checkBoxSound = value ?? false;
+                            switchSound = value ?? false;
                           });
                         },
                       ),
-                    ),
+                    
                   ],
-                ),const SizedBox(height: 50,), ElevatedButton(onPressed: (){}, child: const Text('Clear data'))     
+                ),const SizedBox(height: 50,), 
+                ElevatedButton(onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Are you sure you want to proceed?'),
+          content: const Text('This is going to clear ALL of your data.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      ),  child: const Text('Clear data')),
                       ],
                     ),
         ),
