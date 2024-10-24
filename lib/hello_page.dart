@@ -8,6 +8,8 @@ void main() {
 
 
 class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,6 +19,8 @@ class MainApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -61,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Center(child: (Text("Popular flashcards sets",style: TextStyle(fontSize: 24),)),),
                     Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceAround, 
                     children: [
-                      const Text('set1'), const Text('set2'), const Text('set3'), ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(minimumSize: Size(60, 60)),child: const Icon(Icons.arrow_forward))
+                      const Text('set1'), const Text('set2'), const Text('set3'), ElevatedButton(onPressed: ( ){}, style: ElevatedButton.styleFrom(minimumSize: const Size(60, 60)),child: const Icon(Icons.arrow_forward))
                     ],)
                   ],
                 ) ],
