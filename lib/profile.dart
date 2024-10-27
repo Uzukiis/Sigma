@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sigma/main.dart';
+import 'change_profile_pic.dart';
 
 void main() {
   runApp(const ProfilePage());
@@ -35,15 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Row( mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        children: [
-                          Image(
-                            image: AssetImage('assets/img/sigma.jpg'),height: 75, width: 75,
-                          ),Text(
-                    'James John',
-                  ),
-                        ],
-                      ),
+                      
                   Column(
                     children: [
                       Image(
@@ -58,7 +52,16 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                    
                 ],
-              ), const SizedBox(height: 100),
+                
+              ),const SizedBox(height: 100), const Image(
+                            image: AssetImage('assets/img/sigma.jpg'),height: 75, width: 75,
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton(onPressed: (){showModalBottomSheet(
+      context: context,
+       builder: (ctx) => const ChangePF());}, child: const Text('Change the profile picture')),
+
+              const SizedBox(height: 100),
               Row(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
@@ -112,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: const Text('Cancel'),
             ),
             TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
+              onPressed: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const LoginScreen())),
               child: const Text('OK'),
             ),
           ],

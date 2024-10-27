@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'create_new_set.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(const MainApp());
 }
 
 
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomeScreen(),
     );
   }

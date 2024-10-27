@@ -8,7 +8,7 @@ void main() {
 }
 
 class MainApp extends StatefulWidget {
-  const MainApp({Key? key}) : super(key: key);
+  const MainApp({super.key});
 
   @override
   _MainAppState createState() => _MainAppState();
@@ -60,13 +60,13 @@ class _MainAppState extends State<MainApp> {
           index: selectedIndex,
           children: [
             PageStorage(
-              child: HomeScreen(),
               bucket: PageStorageBucket(),
+              child: const HomeScreen(),
             ),
             const Placeholder(),
             PageStorage(
-              child: const ProfilePage(),
-              bucket: PageStorageBucket()),
+              bucket: PageStorageBucket(),
+              child: const ProfilePage()),
           ],
         ),
       ),
