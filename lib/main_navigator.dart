@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'hello_page.dart';
 import 'profile.dart';
-
+import 'sets_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -63,7 +63,9 @@ class _MainAppState extends State<MainApp> {
               bucket: PageStorageBucket(),
               child: const HomeScreen(),
             ),
-            const Placeholder(),
+            PageStorage(
+              bucket: PageStorageBucket(), 
+              child: const SetsList()),
             PageStorage(
               bucket: PageStorageBucket(),
               child: const ProfilePage()),

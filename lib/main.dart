@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
           seedColor: const Color.fromARGB(100, 240, 186, 123),
         ),
       ),
-      home: Scaffold(
+      home: const Scaffold(
         body: LoginScreent()
       ),
     );

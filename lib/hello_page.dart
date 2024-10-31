@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'create_new_set.dart';
 
 void main() {
   runApp(const MainApp());
@@ -39,15 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(
-        onPressed: () {
-            Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const SecondRoute()),
-  );
-
-        },
-        child: const Icon(Icons.add),),
         body:  Padding(padding: const EdgeInsets.only(left: 20, right: 20,top: 10),
         child: Column(mainAxisSize: MainAxisSize.max,
             children: [ const Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceBetween, 

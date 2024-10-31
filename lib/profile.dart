@@ -41,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Column(
                     children: [
                       Image(
-                              image: AssetImage('img/fire.jpg'),
+                              image: AssetImage('assets/img/fire.jpg'),
                               width: 75,
                               height: 75,
                             ),Text(
