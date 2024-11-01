@@ -1,32 +1,53 @@
 import 'package:flutter/material.dart';
+import 'providers.dart';
+import 'package:provider/provider.dart';
 
 
 class SecondRoute extends StatelessWidget {
-  const SecondRoute({super.key});
+  SecondRoute({super.key});
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create a new set'),
+    return ChangeNotifierProvider(
+      create: (_) => FlashcardTitleProvider(
+        titleController: titleController,
+        descriptionController: descriptionController,
       ),
-      body: Center(
-      child: Padding(padding: const EdgeInsets.all(15),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const TextField(
-            decoration: InputDecoration(
-              label: Text('Title')
-            ),),
-          const TextField(decoration: InputDecoration(
-              label: Text('Description (optional)')
-            )),
-            const SizedBox(height: 50,),
-            ElevatedButton(onPressed: (){}, child: const Text('Create set'))
-        ],
-      ))),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Create a new set'),
+        ),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: titleController,
+                  decoration: const InputDecoration(label: Text('Title')),
+                ),
+                TextField(
+                  controller: descriptionController,
+                  decoration: const InputDecoration(label: Text('Description (optional)')),
+                ),
+                const SizedBox(height: 50),
+                ElevatedButton(
+                  onPressed: () {
+                    final flashcardTitleProvider = Provider.of<FlashcardTitleProvider>(context, listen: false);
+                    print('Title: ${flashcardTitleProvider.flashcardTitle}');
+                    print('Description: ${flashcardTitleProvider.flashcardDescription}');
+                  },
+                  child: const Text('Create set'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

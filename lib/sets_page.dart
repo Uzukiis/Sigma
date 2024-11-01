@@ -43,7 +43,7 @@ class _SetsListState extends State<SetsList> {
         onPressed: () {
             Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const SecondRoute()),
+    MaterialPageRoute(builder: (context) => SecondRoute()),
   );
 
         },

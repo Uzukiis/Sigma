@@ -25,7 +25,8 @@ class LoginScreen extends StatelessWidget {
 }
   class LoginScreent extends StatelessWidget {
   const LoginScreent ({super.key});
-    Widget build(BuildContext context) {
+    @override
+      Widget build(BuildContext context) {
     return Center(
           child: Column(
             children:[
