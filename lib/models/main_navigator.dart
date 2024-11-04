@@ -1,9 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'hello_page.dart';
-import 'profile.dart';
-import 'sets_page.dart';
+import '../pages/hello_page.dart';
+import '../pages/profile.dart';
+import '../pages/sets_page.dart';
 
 void main() {
   runApp(const MainApp());

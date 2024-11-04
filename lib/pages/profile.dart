@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sigma/main.dart';
-import 'change_profile_pic.dart';
+import 'main.dart';
+import '../models/change_profile_pic.dart';
 
 void main() {
   runApp(const ProfilePage());
