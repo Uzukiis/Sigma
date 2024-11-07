@@ -17,7 +17,7 @@ class CreateUser extends StatelessWidget {
           seedColor: const Color.fromARGB(100, 240, 186, 123),
         ),
       ),
-      home: const Scaffold(
+      home: Scaffold(
         body: CreateUsert(),
       ),
     );}
@@ -25,9 +25,10 @@ class CreateUser extends StatelessWidget {
   }
 
 class CreateUsert extends StatelessWidget {
-  const CreateUsert({
+  CreateUsert({
     super.key,
   });
+  final nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +50,11 @@ class CreateUsert extends StatelessWidget {
                   const SizedBox(height: 100)
                 ],
               ),
-              const Padding(
-                padding:  EdgeInsets.all(32.0),
-                child:  TextField(decoration: InputDecoration(
+               Padding(
+                padding: const EdgeInsets.all(32.0),
+                child:  TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
                   label: Text('Name')
                   )),
               ),
