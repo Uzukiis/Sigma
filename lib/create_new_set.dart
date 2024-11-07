@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sigma/data.dart';
 import 'providers.dart';
 import 'package:provider/provider.dart';
 
 
+// ignore: must_be_immutable
 class SecondRoute extends StatelessWidget {
   SecondRoute({super.key});
   final titleController = TextEditingController();
@@ -40,6 +42,7 @@ class SecondRoute extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     //final flashcardTitleProvider = Provider.of<FlashcardTitleProvider>(context, listen: false);
+                    
                     print('Title: ${titleController.text}');
                     setTittles.add(titleController.text);
                     setDescriptions.add(descriptionController.text);
@@ -47,6 +50,10 @@ class SecondRoute extends StatelessWidget {
                     print('titles: $setTittles');
                     print('descriptions: $setDescriptions');
                     Navigator.pop(context);
+                    UserData().titles=setTittles;
+                    UserData().descriptions=setDescriptions;
+                    print('titles: ${UserData().titles=setTittles}');
+                    print('descriptions: ${UserData().descriptions=setDescriptions}');
                   },
                   child: const Text('Create set'),
                 ),

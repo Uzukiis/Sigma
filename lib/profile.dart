@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sigma/main.dart';
 import 'change_profile_pic.dart';
+import 'create_user.dart';
+
 
 void main() {
   runApp(const ProfilePage());
@@ -115,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: const Text('Cancel'),
             ),
             TextButton(
-              onPressed: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const LoginScreen())),
+              onPressed: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const CreateUser())),
               child: const Text('OK'),
             ),
           ],

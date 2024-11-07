@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'create_user.dart';
-
+import 'data.dart';
 void main() {
   runApp(const MainApp());
 }
@@ -18,15 +17,8 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
- var createUserInstance=CreateUsert();
 
   @override
   Widget build(BuildContext context) {
@@ -39,32 +31,41 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       home: Scaffold(
-        body:  Padding(padding: const EdgeInsets.only(left: 20, right: 20,top: 10),
-        child: Column(mainAxisSize: MainAxisSize.max,
-            children: [ const Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-              children: [
-                Text("Sigma", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),), 
-                Image(image: AssetImage('assets/img/sigma.jpg'), width: 50, height: 50)],
-                ),
-                const SizedBox(height: 50,),
-                Column(
-                  children: [
-                   Text('Welcome back ${createUserInstance.nameController.text}!', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),),
-                    const SizedBox(height: 40,),
-                    Container(width: 200, height: 200, decoration: const BoxDecoration(shape: BoxShape.circle, color: Color.fromARGB(255, 0, 0, 0)),),
-                    const SizedBox(height: 100,),
-                    const Center(child: (Text("Popular flashcards sets",style: TextStyle(fontSize: 24),)),),
-                    Row(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.spaceAround, 
-                    children: [
-                      const Text('set1'), const Text('set2'), const Text('set3'), ElevatedButton(onPressed: ( ){}, style: ElevatedButton.styleFrom(minimumSize: const Size(60, 60)),child: const Icon(Icons.arrow_forward))
-                    ],)
-                  ],
-                ) ],
-              
-              
-              
-          )),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Sigma", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500)),
+                  Image(image: AssetImage('assets/img/sigma.jpg'), width: 50, height: 50)
+                ],
+              ),
+              const SizedBox(height: 50),
+              Column(
+                children: [
+                  Text('Welcome back ${UserData().name}!', style: const TextStyle(fontSize: 36, fontWeight: FontWeight.w600)),
+                  const SizedBox(height: 40),
+                  Container(width: 200, height: 200, decoration: const BoxDecoration(shape: BoxShape.circle, color: Color.fromARGB(255, 0, 0, 0))),
+                  const SizedBox(height: 100),
+                  const Center(child:(Text("Popular flashcards sets", style: TextStyle(fontSize: 24)))),
+                  Row(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children:[
+                      const Text('set1'), 
+                      const Text('set2'), 
+                      const Text('set3'), 
+                      ElevatedButton(onPressed:( ){}, style:ElevatedButton.styleFrom(minimumSize :const Size(60 ,60)),child :const Icon(Icons.arrow_forward))
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
         ),
+      ),
     );
   }
 }
