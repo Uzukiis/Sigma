@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'create_user.dart';
 
 void main() {
   runApp(const MainApp());
@@ -25,7 +26,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
+ var createUserInstance=CreateUsert();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 50,),
                 Column(
                   children: [
-                    const Text('Welcome back {USER}!', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),),
+                   Text('Welcome back ${createUserInstance.nameController.text}!', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),),
                     const SizedBox(height: 40,),
                     Container(width: 200, height: 200, decoration: const BoxDecoration(shape: BoxShape.circle, color: Color.fromARGB(255, 0, 0, 0)),),
                     const SizedBox(height: 100,),
