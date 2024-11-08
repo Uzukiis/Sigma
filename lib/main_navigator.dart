@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'hello_page.dart';
+import 'hello.dart';
 import 'profile.dart';
 import 'sets_page.dart';
 
@@ -19,9 +19,6 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   int selectedIndex = 0;
 
-
- 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,7 +29,6 @@ class _MainAppState extends State<MainApp> {
         ),
       ),
       home: Scaffold(
-        
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
           onTap: (index) {
@@ -65,12 +61,8 @@ class _MainAppState extends State<MainApp> {
               bucket: PageStorageBucket(),
               child: const HomeScreen(),
             ),
-            PageStorage(
-              bucket: PageStorageBucket(), 
-              child: const SetsList()),
-            PageStorage(
-              bucket: PageStorageBucket(),
-              child: const ProfilePage()),
+            PageStorage(bucket: PageStorageBucket(), child: const SetsList()),
+            PageStorage(bucket: PageStorageBucket(), child: const Profile()),
           ],
         ),
       ),

@@ -1,129 +1,201 @@
 import 'package:flutter/material.dart';
+// import 'package:sigma/etc.dart';
 import 'change_profile_pic.dart';
-import 'create_user.dart';
 
-
-void main() {
-  runApp(const ProfilePage());
-}
-
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class Profile extends StatefulWidget {
+  const Profile({super.key});
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
-  bool switchNotifications = true;
-  bool switchSound = true;
-
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(100, 240, 186, 123),
+          seedColor: const Color.fromRGBO(240, 186, 123, 1),
         ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 253, 247, 239),
       ),
-      home:  Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20,top: 10),
-          child: Column(
-            
-            children: [
-             const Column(
-                children: [
-                  Row( mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      
-                  Column(
-                    children: [
-                      Image(
-                              image: AssetImage('assets/img/fire.jpg'),
-                              width: 75,
-                              height: 75,
-                            ),Text(
-                          '5 dni',
-                        ),
-                    ],
-                  ),]
-                  ),
-                   
-                ],
-                
-              ),const SizedBox(height: 100), const Image(
-                            image: AssetImage('assets/img/sigma.jpg'),height: 75, width: 75,
-                          ),
-                          const SizedBox(height: 20),
-                          ElevatedButton(onPressed: (){showModalBottomSheet(
-      context: context,
-       builder: (ctx) => const ChangePF());}, child: const Text('Change the profile picture')),
+      home: _ProfilePage(),
+    );
+  }
+}
 
-              const SizedBox(height: 100),
-              Row(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Notifications',
-                      style: TextStyle(
-                        fontSize: 32,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                       Switch(
-                        value: switchNotifications,
-                        activeColor: const Color.fromRGBO(214, 99, 32, 1),
-                        onChanged: (bool? value) {
-                          setState(() {
-                            switchNotifications = value ?? false;
-                          });
-                        },
-                      ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Row(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'SFX',
-                      style: TextStyle(
-                        fontSize: 32,
-                      ),
-                    ),
-                    const SizedBox(width: 10,),
-                      Switch(
-                        value: switchSound,
-                        activeColor: const Color.fromRGBO(214, 99, 32, 1),
-                        onChanged: (bool? value) {
-                          setState(() {
-                            switchSound = value ?? false;
-                          });
-                        },
-                      ),
-                    
-                  ],
-                ),const SizedBox(height: 50,), 
-                ElevatedButton(onPressed: () => showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Are you sure you want to proceed?'),
-          content: const Text('This is going to clear ALL of your data.'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel'),
+class _ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _ProfileImageContainer(),
+            _DaysContainer(),
+            _SettingsContainer()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _DaysContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        SizedBox(
+          width: 200,
+          height: 200,
+          child: Image(image: AssetImage('../assets/img/fire.jpg')),
+        ),
+        SizedBox(
+          height: 12,
+          width: 320,
+        ),
+        Text('Day {DAY}!',
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600)),
+      ],
+    );
+  }
+}
+
+class _ProfileImageContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(width: 10),
+        //!Do zmiany, żeby profil był w kółku
+        const Image(
+          image: AssetImage('../assets/img/sigma.jpg'),
+          width: 60,
+          height: 60,
+        ),
+        const SizedBox(width: 20),
+        Column(
+          children: [
+            const SizedBox(
+              width: 400,
+              child: Text(
+                  "We recommended using an image of at least 256x256 for your avatar",
+                  maxLines: 2,
+                  overflow: TextOverflow.clip),
             ),
-            TextButton(
-              onPressed: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const CreateUser())),
-              child: const Text('OK'),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: 400,
+              child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context, builder: (ctx) => const ChangePF());
+                  },
+                  child: const Text(
+                    'Change Avatar',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                const SizedBox(width: 30),
+                OutlinedButton(
+                  style: ButtonStyle(
+                      side: MaterialStateProperty.all(BorderSide(
+                          width: 1.0,
+                          color: const Color.fromRGBO(255, 58, 36, 1))),
+                      foregroundColor: MaterialStateProperty.all(
+                          const Color.fromRGBO(255, 58, 36, 1)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      )),
+                  //! Do zmiany funkcja
+                  onPressed: () => const ChangePF(),
+                  child: const Text(
+                    'Remove',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ]),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class _SettingsContainer extends StatefulWidget {
+  @override
+  __SetingsContainerState createState() => __SetingsContainerState();
+}
+
+class __SetingsContainerState extends State<_SettingsContainer> {
+  bool switchNotifications = true;
+  bool switchSound = true;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Notifications',
+              style: TextStyle(
+                fontSize: 32,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Switch(
+              value: switchNotifications,
+              activeColor: const Color.fromRGBO(214, 99, 32, 1),
+              onChanged: (bool? value) {
+                setState(() {
+                  switchNotifications = value ?? false;
+                });
+              },
             ),
           ],
         ),
-      ),  child: const Text('Clear data')),
-                      ],
-                    ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'SFX',
+              style: TextStyle(
+                fontSize: 32,
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Switch(
+              value: switchSound,
+              activeColor: const Color.fromRGBO(214, 99, 32, 1),
+              onChanged: (bool? value) {
+                setState(() {
+                  switchSound = value ?? false;
+                });
+              },
+            ),
+          ],
         ),
-                )
-            );}}
+      ],
+    );
+  }
+}
