@@ -1,8 +1,11 @@
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'create_user.dart';
+// import 'create_user.dart';
+import 'login_google.dart';
 
 void main() {
+  // Firebase.initializeApp(options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId))
   runApp(const MyApp());
 }
 
@@ -58,6 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void checkUser(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const CreateUser()));
+        context, MaterialPageRoute(builder: (context) => const LoginGoogle()));
   }
 }
