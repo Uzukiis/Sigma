@@ -7,6 +7,7 @@ class UserData {
   String name = '';
   String title = '';
   String description = '';
-  List<String> titles= [];
-  List<String> descriptions= [];
+  List<String> titles = [];
+  List<String> descriptions = [];
+  Map<String, List<Map<String, String>>> flashcards = {}; // { "Set Title": [{"frontside": "text", "backside": "text"}] }
 }
